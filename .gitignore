@@ -27,6 +27,7 @@ BepInEx/*
 # BepInEx/config/com.bepis.bepinex.configurationmanager.cfg
 
 # mod ignore list
+MPT.Updater.exe
 
 #Include User/Mods/
 !User
