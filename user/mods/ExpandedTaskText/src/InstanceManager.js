@@ -34,6 +34,7 @@ class InstanceManager {
     modPath = path.join(process.cwd(), "\\user\\mods\\TarkovTools\\");
     dbPath = path.join(process.cwd(), "\\user\\mods\\TarkovTools\\database");
     profilePath = path.join(process.cwd(), "\\user\\profiles");
+    cachePath = path.resolve(__dirname, "..\\config\\cache.json");
     // Instances
     container;
     preAkiModLoader;
@@ -51,6 +52,7 @@ class InstanceManager {
     profileHelper;
     ragfairPriceService;
     importerUtil;
+    hashUtil;
     //#endregion
     // Call at the start of the mods postDBLoad method
     preAkiLoad(container, mod) {
@@ -72,6 +74,7 @@ class InstanceManager {
         this.profileHelper = container.resolve("ProfileHelper");
         this.ragfairPriceService = container.resolve("RagfairPriceService");
         this.importerUtil = container.resolve("ImporterUtil");
+        this.hashUtil = container.resolve("HashUtil");
     }
     getPath() {
         const dirPath = path.dirname(__filename);

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
+import * as fs from "fs";
 import * as config from "../config/config.json";
 
 import * as dbEN from "../db/LocaleEN.json";
@@ -14,7 +15,6 @@ import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
 import type { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
 import type { IQuest } from "@spt-aki/models/eft/common/tables/IQuest";
 import { ITrader } from "@spt-aki/models/eft/common/tables/ITrader";
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 
 
 interface TimeGateUnlockRequirements {
@@ -39,6 +39,10 @@ class DExpandedTaskText implements IPostDBLoadMod, IPreAkiLoadMod {
     private timeGateUnlocktimes: TimeGateUnlockRequirements[] = [];
     private requiredQuestsForCollector: string[] = [];
     private requiredQuestsForLightKeeper: string[] = []; //TODO this still doesnt work properly
+    private tasksHash: string;
+    private configHash: string;
+    private cache: { tasksHash: string; configHash: string; locale: Record<string, Record<string, string>>; };
+    
 
     public preAkiLoad(container: DependencyContainer): void {
         this.Instance.preAkiLoad(container, this.modName);
@@ -53,17 +57,62 @@ class DExpandedTaskText implements IPostDBLoadMod, IPreAkiLoadMod {
 
         this.getAllTasks(this.Instance.database);
 
-        this.getAllRequiredQuestsForQuest("5c51aac186f77432ea65c552", this.requiredQuestsForCollector);
+        this.getHashes();
+        if (this.isCacheValid()) {
+            for (const localeID in this.locale) {
+                for (const questDesc in this.cache.locale[localeID]) {
+                    this.locale[localeID][questDesc] = this.cache.locale[localeID][questDesc];
+                }
+            }
+        }
+        else {
+            this.cache = {
+                tasksHash: this.tasksHash,
+                configHash: this.configHash,
+                locale: {}
+            };
+            for (const localeID in this.locale) {
+                this.cache.locale[localeID] = {};
+            }
 
-        //this.getAllRequiredQuestsForQuest("625d6ff5ddc94657c21a1625", this.requiredQuestsForLightKeeper);
+            this.getAllRequiredQuestsForQuest("5c51aac186f77432ea65c552", this.requiredQuestsForCollector);
 
-        this.getAllQuestsWithTimeRequirements();
-        this.updateAllTasksText(this.Instance.database);
+            //this.getAllRequiredQuestsForQuest("625d6ff5ddc94657c21a1625", this.requiredQuestsForLightKeeper);
+
+            this.getAllQuestsWithTimeRequirements();
+            this.updateAllTasksText(this.Instance.database);
+            fs.writeFileSync(this.Instance.cachePath, this.Instance.jsonUtil.serialize(this.cache, true));
+        }
 
         const endTime = performance.now();
         const startupTime = (endTime - startTime) / 1000;
 
         this.Instance.logger.log(`Expanded Task Text startup took ${startupTime} seconds...`, LogTextColor.GREEN);
+    }
+
+    private getHashes(): void {
+        const tasksString = this.Instance.jsonUtil.serialize(this.tasks);
+        const configString = this.Instance.jsonUtil.serialize(config);
+        
+        this.tasksHash = this.Instance.hashUtil.generateHashForData("sha1", tasksString);
+        this.configHash = this.Instance.hashUtil.generateHashForData("sha1", configString);
+    }
+
+    private isCacheValid(): boolean {
+        if (!fs.existsSync(this.Instance.cachePath)) {
+            this.Instance.logger.log("Cache not found. Processing tasks.", LogTextColor.GREEN);
+            return false;
+        }
+        this.cache = JSON.parse(fs.readFileSync(this.Instance.cachePath, "utf-8"));
+		
+        if (this.cache.tasksHash == this.tasksHash && this.cache.configHash == this.configHash) {
+            this.Instance.logger.log("Valid cache found. Merging saved tasks.", LogTextColor.GREEN);
+            return true;
+        }
+        else {
+            this.Instance.logger.log("Invalid cache found. Processing tasks.", LogTextColor.GREEN);
+            return false;
+        }
     }
 
     private getAllTasks(database: IDatabaseTables): void {
@@ -211,7 +260,7 @@ class DExpandedTaskText implements IPostDBLoadMod, IPreAkiLoadMod {
                 }
 
                 if (this.requiredQuestsForCollector.includes(key) && config.ShowCollectorRequirements) {
-                    collector = "This quest is required for collector \n \n";
+                    collector = "This quest is required for Collector \n \n";
                 }
                 /*
                 if (this.requiredQuestsForLightKeeper.includes(key) && config.ShowLightKeeperRequirements) 
@@ -219,9 +268,20 @@ class DExpandedTaskText implements IPostDBLoadMod, IPreAkiLoadMod {
                     lightKeeper = "This quest is required for Lightkeeper \n \n";
                 }
                 */
-                if ((this.getAllNextQuestsInChain(key) !== undefined || this.getAllNextQuestsInChain(key) !== "") && config.ShowNextQuestInChain) 
+
+                const nextQuest: string = this.getAllNextQuestsInChain(key);
+
+                if (nextQuest.length > 0 && config.ShowNextQuestInChain) 
                 {
-                    leadsTo = `Leads to: ${this.getAllNextQuestsInChain(key)} \n \n`;
+                    leadsTo = `Leads to: ${nextQuest} \n \n`;
+                }
+                else if (config.ShowNextQuestInChain)
+                {
+                    leadsTo = "Leads to: Nothing \n \n";
+                }
+                else
+                {
+                    leadsTo = "";
                 }
 
                 if (gsEN[key]?.RequiredParts !== undefined && config.ShowGunsmithRequiredParts) 
@@ -271,14 +331,10 @@ class DExpandedTaskText implements IPostDBLoadMod, IPreAkiLoadMod {
                     timeUntilNext = "";
                 }
 
-                if (this.getAllNextQuestsInChain(key) === undefined || !config.ShowNextQuestInChain) 
-                {
-                    leadsTo = "";
-                }
-
                 if (!this.Instance.getPath()) 
                 {
                     database.locales.global[localeID][`${key} description`] = collector + lightKeeper + leadsTo + timeUntilNext + keyDesc + durability + requiredParts + originalDesc;
+                    this.cache.locale[localeID][`${key} description`] = database.locales.global[localeID][`${key} description`];
                 }
             }
         });
