@@ -917,16 +917,16 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
             equipment: {
                 Headwear: [75, 85, 99, 99, 99][index],
                 Earpiece: [55, 75, 95, 100, 100][index],
-                FaceCover: [25, 35, 65, 75, 80][index],
+                FaceCover: [25, 35, 65, 75, 90][index],
                 ArmorVest: [99, 99, 99, 99, 99][index],
                 ArmBand: [25, 45, 59, 69, 80][index],
                 TacticalVest: [96, 96, 99, 99, 99][index],
                 Pockets: [25, 45, 59, 69, 80][index],
-                SecondPrimaryWeapon: [0, 0, 0, 0, 1][index],
+                SecondPrimaryWeapon: [0, 0, 0, 0, 5][index],
                 SecuredContainer: 100,
                 Scabbard: [1, 5, 5, 10, 40][index],
                 FirstPrimaryWeapon: [85, 98, 99, 99, 99][index],
-                Holster: [1, 5, 10, 10, 10][index],
+                Holster: [1, 5, 10, 10, 25][index],
                 Eyewear: [15, 25, 40, 60, 75][index],
                 Backpack: [70, 85, 90, 99, 99][index],
             },
@@ -1056,28 +1056,9 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 },
                 backpackLoot: {
                     weights: lootingBotsDetected
-                        ? [
-                            {
-                                "0": 5,
-                                "1": 1,
-                            },
-                            {
-                                "0": 4,
-                                "1": 1,
-                            },
-                            {
-                                "0": 3,
-                                "1": 1,
-                            },
-                            {
-                                "0": 2,
-                                "1": 1,
-                            },
-                            {
-                                "0": 1,
-                                "1": 1,
-                            },
-                        ][index]
+                        ? {
+                            "0": 1,
+                        }
                         : [
                             {
                                 "0": 1,
@@ -1130,28 +1111,9 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 },
                 pocketLoot: {
                     weights: lootingBotsDetected
-                        ? [
-                            {
-                                "0": 5,
-                                "1": 1,
-                            },
-                            {
-                                "0": 4,
-                                "1": 1,
-                            },
-                            {
-                                "0": 3,
-                                "1": 1,
-                            },
-                            {
-                                "0": 2,
-                                "1": 1,
-                            },
-                            {
-                                "0": 1,
-                                "1": 1,
-                            },
-                        ][index]
+                        ? {
+                            "0": 1,
+                        }
                         : [
                             {
                                 "0": 4,
@@ -1186,28 +1148,9 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 },
                 vestLoot: {
                     weights: lootingBotsDetected
-                        ? [
-                            {
-                                "0": 5,
-                                "1": 1,
-                            },
-                            {
-                                "0": 4,
-                                "1": 1,
-                            },
-                            {
-                                "0": 3,
-                                "1": 1,
-                            },
-                            {
-                                "0": 2,
-                                "1": 1,
-                            },
-                            {
-                                "0": 1,
-                                "1": 1,
-                            },
-                        ][index]
+                        ? {
+                            "0": 1,
+                        }
                         : [
                             {
                                 "0": 3,
@@ -1292,7 +1235,7 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
             weaponMods: {
                 mod_barrel: [5, 20, 35, 55, 65][index],
                 mod_bipod: [1, 10, 5, 11, 50][index],
-                mod_flashlight: [5, 35, 55, 75, 90][index],
+                mod_flashlight: [5, 35, 65, 80, 90][index],
                 mod_foregrip: [10, 40, 70, 90, 95][index],
                 mod_handguard: [5, 40, 70, 90, 95][index],
                 mod_launcher: [0, 0, 5, 15, 50][index],
@@ -1308,24 +1251,24 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 mod_mount_006: [20, 45, 75, 90, 95][index],
                 mod_muzzle: [5, 15, 35, 70, 100][index],
                 mod_muzzle_000: [5, 15, 55, 100, 100][index],
-                mod_muzzle_001: [5, 15, 55, 100, 100][index],
-                mod_equipment: [15, 25, 45, 55, 70][index],
-                mod_equipment_000: [0, 0, 5, 15, 25][index],
-                mod_equipment_001: [0, 0, 5, 15, 25][index],
-                mod_equipment_002: [0, 0, 5, 15, 25][index],
-                mod_pistol_grip_akms: [1, 15, 25, 35, 50][index],
-                mod_pistol_grip: [1, 25, 35, 45, 70][index],
+                mod_muzzle_001: [5, 15, 80, 100, 100][index],
+                mod_equipment: [15, 25, 45, 75, 90][index],
+                mod_equipment_000: [0, 0, 10, 35, 45][index],
+                mod_equipment_001: [0, 0, 10, 35, 45][index],
+                mod_equipment_002: [0, 0, 10, 35, 45][index],
+                mod_pistol_grip_akms: [1, 25, 45, 55, 80][index],
+                mod_pistol_grip: [1, 25, 45, 65, 80][index],
                 mod_scope: [50, 80, 100, 100, 100][index],
                 mod_scope_000: [30, 80, 100, 100, 100][index],
                 mod_scope_001: [30, 80, 100, 100, 100][index],
                 mod_scope_002: [30, 80, 100, 100, 100][index],
                 mod_scope_003: [30, 80, 100, 100, 100][index],
-                mod_tactical: [15, 30, 45, 70, 95][index],
+                mod_tactical: [15, 30, 65, 70, 95][index],
                 mod_tactical_2: 0,
-                mod_tactical001: [5, 25, 45, 60, 75][index],
-                mod_tactical002: [5, 25, 45, 60, 75][index],
-                mod_tactical_000: [1, 5, 5, 25, 45][index],
-                mod_tactical_001: [1, 5, 5, 25, 45][index],
+                mod_tactical001: [5, 25, 45, 70, 85][index],
+                mod_tactical002: [5, 25, 45, 70, 85][index],
+                mod_tactical_000: [1, 5, 10, 45, 65][index],
+                mod_tactical_001: [1, 5, 10, 45, 65][index],
                 mod_tactical_002: [15, 30, 55, 70, 95][index],
                 mod_tactical_003: [15, 30, 55, 70, 95][index],
                 mod_charge: [10, 20, 55, 70, 95][index],
@@ -1333,11 +1276,11 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 mod_stock_000: 99,
                 // "mod_stock_001": [1, 10, 15, 20][index],
                 mod_stock_akms: 100,
-                mod_sight_front: [50, 20, 5, 0, 0][index],
-                mod_sight_rear: [50, 20, 5, 0, 0][index],
+                mod_sight_front: [80, 30, 5, 0, 0][index],
+                mod_sight_rear: [80, 30, 5, 0, 0][index],
                 // "mod_reciever": 100,
                 // "mod_gas_block": [1, 10, 15, 20][index],
-                mod_pistolgrip: [1, 15, 25, 35, 50][index],
+                mod_pistolgrip: [1, 15, 45, 55, 90][index],
                 // "mod_trigger": 1,
                 // "mod_hammer": 1,
                 // "mod_catch": 1
@@ -1349,35 +1292,35 @@ const buildInitialRandomization = (items, botConfig, traderList, lootingBotsDete
                 left_side_plate: [50, 80, 90, 90, 100][index],
                 right_side_plate: [50, 80, 90, 90, 100][index],
                 mod_flashlight: [5, 25, 35, 45, 70][index],
-                mod_equipment: [15, 25, 25, 35, 50][index],
+                mod_equipment: [15, 25, 25, 35, 70][index],
                 mod_equipment_000: [0, 0, 0, 5, 20][index],
                 mod_equipment_001: [0, 0, 5, 15, 25][index],
                 mod_equipment_002: [0, 0, 5, 15, 25][index],
             },
         };
-        const medkitsAdd = {
-            1: ["590c661e86f7741e566b646a"],
-            2: [],
-            3: ["590c678286f77426c9660122"],
-            4: ["590c657e86f77412b013051d", "60098ad7c2240c0fe85c570a"],
-            5: [],
-        };
-        const medkitsRemove = {
-            1: new Set(["60098ad7c2240c0fe85c570a", "590c678286f77426c9660122"]),
-            2: new Set([
-                "590c678286f77426c9660122",
-                "5755356824597772cb798962",
-                "590c657e86f77412b013051d",
-                "60098ad7c2240c0fe85c570a",
-            ]),
-            3: new Set(["590c657e86f77412b013051d", "5755356824597772cb798962"]),
-            4: new Set(["5755356824597772cb798962", "590c661e86f7741e566b646a"]),
-            5: new Set([
-                "544fb45d4bdc2dee738b4568",
-                "5755356824597772cb798962",
-                "590c661e86f7741e566b646a",
-            ]),
-        };
+        // const medkitsAdd = {
+        //   1: ["590c661e86f7741e566b646a"],
+        //   2: [],
+        //   3: ["590c678286f77426c9660122"],
+        //   4: ["590c657e86f77412b013051d", "60098ad7c2240c0fe85c570a"],
+        //   5: [],
+        // };
+        // const medkitsRemove = {
+        //   1: new Set(["60098ad7c2240c0fe85c570a", "590c678286f77426c9660122"]),
+        //   2: new Set([
+        //     "590c678286f77426c9660122",
+        //     "5755356824597772cb798962",
+        //     "590c657e86f77412b013051d",
+        //     "60098ad7c2240c0fe85c570a",
+        //   ]),
+        //   3: new Set(["590c657e86f77412b013051d", "5755356824597772cb798962"]),
+        //   4: new Set(["5755356824597772cb798962", "590c661e86f7741e566b646a"]),
+        //   5: new Set([
+        //     "544fb45d4bdc2dee738b4568",
+        //     "5755356824597772cb798962",
+        //     "590c661e86f7741e566b646a",
+        //   ]),
+        // };
         traderList[num].forEach((id) => {
             const item = items[id];
             const parent = item._parent;

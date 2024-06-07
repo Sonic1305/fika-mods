@@ -1,6 +1,7 @@
 {
   "order": [
     "ServerValueModifier",
+    "WTT-HeadVoiceSelector",
     "MoreCheckmarksBackend",
     "Skwizzy-NoDiscardLimit",
     "ExpandedTaskText",

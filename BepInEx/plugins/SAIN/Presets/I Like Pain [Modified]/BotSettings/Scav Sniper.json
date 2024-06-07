@@ -230,7 +230,7 @@
       "Change": {},
       "Core": {
         "VisibleAngle": 170.0,
-        "VisibleDistance": 147.0,
+        "VisibleDistance": 208.98,
         "GainSightCoef": 0.1,
         "ScatteringPerMeter": 0.1,
         "ScatteringClosePerMeter": 0.12,

@@ -317,11 +317,19 @@ function ProgressionChanges(container) {
         (0, utils_1.buildInitialRandomization)(items, botConfig, tradersMasterList, lootingBotsDetected);
         (0, utils_1.deleteBlacklistedItemsFromInventory)(usecInventory);
         (0, utils_1.deleteBlacklistedItemsFromInventory)(bearInventory);
-        // add grizzly and surv to bot container
-        usecInventory.items.SecuredContainer["590c657e86f77412b013051d"] = 1;
+        // add ai2 and surv to bot containerq
+        // cms
         usecInventory.items.SecuredContainer["5d02778e86f774203e7dedbe"] = 1;
-        bearInventory.items.SecuredContainer["590c657e86f77412b013051d"] = 1;
         bearInventory.items.SecuredContainer["5d02778e86f774203e7dedbe"] = 1;
+        // ai2
+        usecInventory.items.SecuredContainer["5755356824597772cb798962"] = 1;
+        bearInventory.items.SecuredContainer["5755356824597772cb798962"] = 1;
+        // Splint
+        usecInventory.items.SecuredContainer["5af0454c86f7746bf20992e8"] = 1;
+        bearInventory.items.SecuredContainer["5af0454c86f7746bf20992e8"] = 1;
+        // Esmarch5e831507ea0a7c419c2f9bd9
+        usecInventory.items.SecuredContainer["5e831507ea0a7c419c2f9bd9F"] = 1;
+        bearInventory.items.SecuredContainer["5e831507ea0a7c419c2f9bd9F"] = 1;
         (0, utils_1.ensureAllAmmoInSecuredContainer)(usecInventory);
         (0, utils_1.ensureAllAmmoInSecuredContainer)(bearInventory);
         (0, utils_1.addBossSecuredContainer)(usecInventory);

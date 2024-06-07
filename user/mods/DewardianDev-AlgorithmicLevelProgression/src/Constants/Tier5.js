@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
-    "Scabbard": [
+    Scabbard: [
         "54491bb74bdc2d09088b4567",
         "57cd379a24597778e7682ecf",
         "57e26ea924597715ca604a09",
@@ -11,9 +11,9 @@ exports.default = {
         "5c07df7f0db834001b73588a",
         "5fc64ea372b0dd78d51159dc",
         "601948682627df266209af05",
-        "63495c500c297e20065a08b1"
+        "63495c500c297e20065a08b1",
     ],
-    "Backpack": [
+    Backpack: [
         "56e335e4d2720b6c058b456d",
         "56e33634d2720bd8058b456b",
         "59e763f286f7742ee57895da",
@@ -22,9 +22,9 @@ exports.default = {
         "6034d103ca006d2dca39b3f0",
         "61b9e1aaef9a1b5d6a79899a",
         "628bc7fb408e2b2e9c0801b1",
-        "628e1ffc83ec92260c0f437f"
+        "628e1ffc83ec92260c0f437f",
     ],
-    "Headwear": [
+    Headwear: [
         "572b7d8524597762b472f9d1",
         "572b7fa124597762b472f9d2",
         "59e7708286f7742cbd762753",
@@ -63,9 +63,9 @@ exports.default = {
         "61bca7cda0eae612383adf57",
         "61c18db6dfd64163ea78fbb4",
         "628e4dd1f477aa12234918aa",
-        "636270263f2495c26f00b007"
+        "636270263f2495c26f00b007",
     ],
-    "FaceCover": [
+    FaceCover: [
         "572b7fa524597762b747ce82",
         "59e7715586f7742ee5789605",
         "5b4326435acfc433000ed01d",
@@ -94,20 +94,18 @@ exports.default = {
         "62a5c41e8ec41a51b34739c3",
         "62a61bbf8ec41a51b34758d2",
         "635267ab3c89e2112001f826",
-        "63626d904aa74b8fe30ab426"
+        "63626d904aa74b8fe30ab426",
     ],
-    "Eyewear": [
+    Eyewear: [
         "59e770b986f7742cbd762754",
         "5aa2b923e5b5b000137b7589",
         "5aa2b9aee5b5b00015693121",
         "5e71f70186f77429ee09f183",
         "61c18d83b00456371a66814b",
-        "62a09e410b9d3c46de5b6e78"
+        "62a09e410b9d3c46de5b6e78",
     ],
-    "Holster": [
-        "5b3b713c5acfc4330140bd8d"
-    ],
-    "ArmorVest": [
+    Holster: ["5b3b713c5acfc4330140bd8d"],
+    ArmorVest: [
         "5b44cf1486f77431723e3d05",
         "5c0e541586f7747fa54205c9",
         "5c0e625a86f7742d77340f62",
@@ -116,18 +114,18 @@ exports.default = {
         "6038b4b292ec1c3103795a0b",
         "6038b4ca92ec1c3103795a0d",
         "607f20859ee58b18e41ecd90",
-        "62a09d79de7ac81993580530"
+        "62a09d79de7ac81993580530",
     ],
-    "FirstPrimaryWeapon": [
+    FirstPrimaryWeapon: [
         "6275303a9f372d6ea97f9ec7",
         "5bf3e0490db83400196199af",
         "5de7bd7bfd6b4e6e2276dc25",
         "639af924d0446708ee62294e",
         "639c3fbbd0446708ee622ee9",
         "64637076203536ad5600c990",
-        "64ca3d3954fc657e230529cc"
+        "64ca3d3954fc657e230529cc",
     ],
-    "ammo": [
+    ammo: [
         "5c0d56a986f774449d5de529",
         "5c0d591486f7744c505b416f",
         "5c0d5ae286f7741e46554302",
@@ -151,9 +149,9 @@ exports.default = {
         "5a6086ea4f39f99cd479502f",
         "560d61e84bdc2da74d8b4571",
         "5cadf6eeae921500134b2799",
-        "5fc382a9d724d907e2077dab"
+        "5fc382a9d724d907e2077dab",
     ],
-    "TacticalVest": [
+    TacticalVest: [
         "5c0e9f2c86f77432297fe0a3",
         "5f5f41f56760b4138443b352",
         "5fd4c4fa16cac650092f6771",
@@ -165,14 +163,14 @@ exports.default = {
         "628baf0b967de16aab5a4f36",
         "63611865ba5b90db0c0399d1",
         "64a536392d2c4e6e970f4121",
-        "64a5366719bab53bd203bf33"
+        "64a5366719bab53bd203bf33",
     ],
-    "Earpiece": [
+    Earpiece: [
         "5e4d34ca86f774264f758330",
         "5f60cd6cf2bcbb675b00dac6",
-        "628e4e576d783146b124c64d"
+        "628e4e576d783146b124c64d",
     ],
-    "ArmBand": [
+    ArmBand: [
         "5f9949d869e2777a0e779ba5",
         "60b0f988c4449e4cb624c1da",
         "619bc61e86e01e16f839a999",
@@ -184,9 +182,9 @@ exports.default = {
         "619bdeb986e01e16f839a99e",
         "619bdef8c9546643a67df6f6",
         "619bdf9cc9546643a67df6f8",
-        "619bdfd4c9546643a67df6fa"
+        "619bdfd4c9546643a67df6fa",
     ],
-    "StimsMeds": [
+    StimsMeds: [
         "5751a89d24597722aa0e8db0",
         "5755383e24597772cb798966",
         "5ed515c8d380ab312177c0fa",
@@ -203,12 +201,11 @@ exports.default = {
         "637b6179104668754b72f8f5",
         "637b620db7afa97bfc3d7009",
         "637b6251104668754b72f8f9",
-        "648c1a965043c4052a4f8505"
     ],
-    "Grenades": [
+    Grenades: [
         "5e340dcdcb6d5863cc5e5efb",
         "617fd91e5539a84ec44ce155",
-        "618a431df1eb8e24b8741deb"
+        "618a431df1eb8e24b8741deb",
     ],
 };
 //# sourceMappingURL=Tier5.js.map

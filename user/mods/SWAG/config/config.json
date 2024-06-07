@@ -1,6 +1,6 @@
 {
-   "BossDifficulty": "normal",
-   "BossEscortDifficulty": "normal",
+   "BossDifficulty": "hard",
+   "BossEscortDifficulty": "hard",
    "disableAllSpawns": {
       "bosses": false,
       "rogues": false,
